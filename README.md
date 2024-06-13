@@ -7,6 +7,8 @@
 </p>
 <br><br>
 
+<b>A fork that enables [state restoration](https://developer.apple.com/library/archive/documentation/NetworkingInternetWeb/Conceptual/CoreBluetooth_concepts/CoreBluetoothBackgroundProcessingForIOSApps/PerformingTasksWhileYourAppIsInTheBackground.html) for iOS</b>
+
 **Note: this plugin is continuous work from [FlutterBlue](https://github.com/pauldemarco/flutter_blue).**
 
 Migrating from [FlutterBlue](https://github.com/pauldemarco/flutter_blue)? See [Migration Guide](MIGRATION.md)

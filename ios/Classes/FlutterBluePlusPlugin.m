@@ -98,6 +98,15 @@ typedef NS_ENUM(NSUInteger, LogLevel) {
 // ██       ██   ██  ██       ██                           
 //  ██████  ██   ██  ███████  ███████                     
 
+
+- (void)centralManager:(CBCentralManager *)central
+      willRestoreState:(NSDictionary *)state {
+
+    NSArray *peripherals =
+            state[CBCentralManagerRestoredStatePeripheralsKey];
+}
+
+
 - (void)handleMethodCall:(FlutterMethodCall *)call result:(FlutterResult)result
 {
     @try
@@ -118,7 +127,9 @@ typedef NS_ENUM(NSUInteger, LogLevel) {
             Log(LDEBUG, @"initializing CBCentralManager");
 
             NSDictionary *options = @{
-                CBCentralManagerOptionShowPowerAlertKey: self.showPowerAlert
+                CBCentralManagerOptionShowPowerAlertKey: self.showPowerAlert,
+                CBCentralManagerOptionRestoreIdentifierKey:
+                @"myCentralManagerIdentifier"
             };
 
             Log(LDEBUG, @"show power alert: %@", [self.showPowerAlert boolValue] ? @"yes" : @"no");
