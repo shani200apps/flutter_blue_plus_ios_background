@@ -102,8 +102,16 @@ typedef NS_ENUM(NSUInteger, LogLevel) {
 - (void)centralManager:(CBCentralManager *)central
       willRestoreState:(NSDictionary *)state {
 
-    NSArray *peripherals =
-            state[CBCentralManagerRestoredStatePeripheralsKey];
+    NSArray *peripherals = state[CBCentralManagerRestoredStatePeripheralsKey];
+    if (peripherals) {
+        for (CBPeripheral *peripheral in peripherals) {
+            NSLog(@"Connected to peripheral: %@", peripheral.name);
+            [self.centralManager connectPeripheral:peripheral options:nil];
+            [self centralManager:self.centralManager didConnectPeripheral:peripheral];
+
+        }
+    }
+    
 }
 
 
